@@ -12,6 +12,9 @@ const Logo = (props) => {
 };
 
 const Link = styled.a`
+  position: absolute;
+  top: 21px;
+  left: 32px;
   text-decoration: none;
   color: inherit;
 `;
