@@ -35,15 +35,21 @@ const ShoeCard = ({
     <Link href={`/shoe/${slug}`}>
       <Wrapper>
         <ImageWrapper>
+          {variant === 'on-sale' && <OnSaleTag>Sale</OnSaleTag>}
+          {variant === 'new-release' && <NewReleTag>Just Released</NewReleTag>}
           <Image alt="" src={imageSrc} />
         </ImageWrapper>
         <Spacer size={12} />
         <Row>
           <Name>{name}</Name>
-          <Price>{formatPrice(price)}</Price>
+          <Price variant={variant}>{formatPrice(price)}</Price>
         </Row>
+        
         <Row>
+
           <ColorInfo>{pluralize('Color', numOfColors)}</ColorInfo>
+          {salePrice && <SalePrice>{formatPrice(salePrice)}</SalePrice>}
+
         </Row>
       </Wrapper>
     </Link>
@@ -68,7 +74,6 @@ const ImageWrapper = styled.div`
 const Image = styled.img`
   height: 100%;
   width: 100%;
-  object-fit: fill;
   border-radius: 16px 16px 4px 4px;
 
 
@@ -85,11 +90,29 @@ const Name = styled.h3`
   color: ${COLORS.gray[900]};
 `;
 
-const Price = styled.span``;
+const Price = styled.span`
+  text-decoration: ${props => props.variant === 'on-sale' ? 'line-through' : 'none'};
+`;
 
 const ColorInfo = styled.p`
   color: ${COLORS.gray[700]};
 `;
+
+const Tag = styled.div`
+  color:white;
+  position: absolute;
+  top: 20px;
+  right: -10px;
+  padding: 7px;
+  border-radius: 4px;
+`
+
+const OnSaleTag = styled(Tag)`
+  background-color: #C5295D;
+`
+const NewReleTag = styled(Tag)`
+  background-color: #6868D9;
+`
 
 const SalePrice = styled.span`
   font-weight: ${WEIGHTS.medium};
