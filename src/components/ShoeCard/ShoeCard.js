@@ -55,16 +55,29 @@ const Link = styled.a`
   color: inherit;
 `;
 
-const Wrapper = styled.article``;
+const Wrapper = styled.article`
+
+`;
 
 const ImageWrapper = styled.div`
   position: relative;
+  max-width: 340px;
+  max-height: 312px;
 `;
 
-const Image = styled.img``;
+const Image = styled.img`
+  height: 100%;
+  width: 100%;
+  object-fit: fill;
+  border-radius: 16px 16px 4px 4px;
+
+
+`;
 
 const Row = styled.div`
   font-size: 1rem;
+  display: flex;
+  justify-content: space-between;
 `;
 
 const Name = styled.h3`
